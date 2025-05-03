@@ -12,10 +12,11 @@ public class PilhaDocumentosService {
         this.topo = null;
     }
 
-    void push(Documento novoDoc) {
-            refProximo = topo;
-            topo = novoDoc;
-            novoDoc.setRefProxDocumento(refProximo);
+    void push(String tipo) {
+        Documento novoDoc = new Documento(tipo);
+        refProximo = topo;
+        topo = novoDoc;
+        novoDoc.setRefProxDocumento(refProximo);
     }
 
     Documento top() {

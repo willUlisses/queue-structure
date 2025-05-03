@@ -15,26 +15,29 @@ public class FilaClientesService {
         this.numeroDaSenha = 1;
     }
 
-    public void enqueue(Cliente novoCliente) {
+    void enqueue(String nome) {
+        Cliente novoCliente = new Cliente(nome);
         if (isEmpty()) {
             primeiro = novoCliente;
             ultimo = novoCliente;
-            refEntrada = ultimo;
             novoCliente.setNumeroDaSenha(numeroDaSenha++);
         } else {
-            refEntrada.setRefProxCliente(novoCliente);
+            ultimo.setRefProxCliente(novoCliente);
             ultimo = novoCliente;
-            refEntrada = ultimo;
             novoCliente.setNumeroDaSenha(numeroDaSenha++);
         }
     }
 
-    public void dequeue() {
-        Cliente refDequeued;
+    void dequeue() {
         if (!isEmpty()) {
-            refDequeued = primeiro;
             primeiro = primeiro.getRefProxCliente();
+        } else {
+            throw new IllegalStateException("A fila está vazia");
         }
+    }
+
+    Cliente first() {
+        return primeiro;
     }
 
     private boolean isEmpty() {
@@ -44,12 +47,12 @@ public class FilaClientesService {
     @Override
     public String toString() {
         String stringRetorno = "Fila de Clientes:\n";
-        stringRetorno += "---------------\n";
+        stringRetorno += "-----------------\n";
 
         Cliente refAuxiliar = primeiro;
         stringRetorno += "Inicio == ";
         while (true) {
-            stringRetorno += "{Cliente: " + refAuxiliar.getNumeroDaSenha() + "} --> ";
+            stringRetorno += "{Cliente: " + refAuxiliar.getNome() + ", Senha: " + refAuxiliar.getNumeroDaSenha() + "} --> ";
             if (refAuxiliar.getRefProxCliente() != null) {
                 refAuxiliar = refAuxiliar.getRefProxCliente();
             } else {

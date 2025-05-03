@@ -2,22 +2,22 @@ package Model;
 
 public class Documento {
 
-    Documento tipo;
+    String tipo;
     Documento refProxDocumento;
     private boolean validade;
 
     public Documento() {  }
 
-    public Documento (Documento tipoDoc, boolean validade) {
+    public Documento (String tipoDoc) {
         this.tipo = tipoDoc;
-        this.validade = validade;
+        this.validade = true;
     }
 
-    public Documento getTipo() {
+    public String getTipo() {
         return tipo;
     }
 
-    public void setTipo(Documento tipo) {
+    public void setTipo(String tipo) {
         this.tipo = tipo;
     }
 

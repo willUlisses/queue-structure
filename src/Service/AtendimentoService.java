@@ -9,7 +9,7 @@ public class AtendimentoService {
     PilhaDocumentosService pilhaDocumentos = new PilhaDocumentosService();
 
     public String verificaDocumento() {
-        return chamarCliente().getDataVencimentoDocumento() < 2025 ? "Documento válido" : "Documento Invalido";
+        return chamarCliente().getDataVencimentoDocumento() < 2025 ? "Documento invalido" : "Documento válido";
     }
 
     public void adicionarClienteNaFila(String nome, int vencimentoDocumento) {

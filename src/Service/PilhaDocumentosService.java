@@ -12,8 +12,8 @@ public class PilhaDocumentosService {
         this.topo = null;
     }
 
-    void push(String tipo) {
-        Documento novoDoc = new Documento(tipo);
+    void push(String tipo, int vencimentoDoc) {
+        Documento novoDoc = new Documento(vencimentoDoc);
         refProximo = topo;
         topo = novoDoc;
         novoDoc.setRefProxDocumento(refProximo);

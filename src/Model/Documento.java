@@ -2,14 +2,13 @@ package Model;
 
 public class Documento {
 
-    String tipo;
+    private int vencimento;
     Documento refProxDocumento;
     private boolean validade;
 
     public Documento() {  }
 
-    public Documento (String tipoDoc) {
-        this.tipo = tipoDoc;
+    public Documento (int vencimento) {
         this.validade = true;
     }
 
@@ -19,6 +18,14 @@ public class Documento {
 
     public void setTipo(String tipo) {
         this.tipo = tipo;
+    }
+
+    public int getVencimento() {
+        return vencimento;
+    }
+
+    public void setVencimento(int vencimento) {
+        this.vencimento = vencimento;
     }
 
     public void setValidade(boolean validade) {

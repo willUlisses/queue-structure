@@ -8,8 +8,12 @@ public class AtendimentoService {
     FilaClientesService filaClientes = new FilaClientesService();
     PilhaDocumentosService pilhaDocumentos = new PilhaDocumentosService();
 
-    public void adicionarClienteNaFila(String nome) {
-        filaClientes.enqueue(nome);
+    public String verificaDocumento() {
+        return chamarCliente().getDataVencimentoDocumento() < 2025 ? "Documento válido" : "Documento Invalido";
+    }
+
+    public void adicionarClienteNaFila(String nome, int vencimentoDocumento) {
+        filaClientes.enqueue(nome, vencimentoDocumento);
     }
 
     public Cliente chamarCliente() {

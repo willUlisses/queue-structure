@@ -15,8 +15,8 @@ public class FilaClientesService {
         this.numeroDaSenha = 1;
     }
 
-    void enqueue(String nome) {
-        Cliente novoCliente = new Cliente(nome);
+    void enqueue(String nome, int vencimentoDoc) {
+        Cliente novoCliente = new Cliente(nome, vencimentoDoc);
         if (isEmpty()) {
             primeiro = novoCliente;
             ultimo = novoCliente;

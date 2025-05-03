@@ -40,6 +40,10 @@ public class Cliente {
         this.documento = doc;
     }
 
+    public Documento getDocumento() {
+        return documento;
+    }
+
     public int getDataVencimentoDocumento() {
         return documento.getVencimento();
     }

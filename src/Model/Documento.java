@@ -4,20 +4,11 @@ public class Documento {
 
     private int vencimento;
     Documento refProxDocumento;
-    private boolean validade;
 
     public Documento() {  }
 
     public Documento (int vencimento) {
-        this.validade = true;
-    }
-
-    public String getTipo() {
-        return tipo;
-    }
-
-    public void setTipo(String tipo) {
-        this.tipo = tipo;
+        this.vencimento = vencimento;
     }
 
     public int getVencimento() {
@@ -28,13 +19,6 @@ public class Documento {
         this.vencimento = vencimento;
     }
 
-    public void setValidade(boolean validade) {
-        this.validade = validade;
-    }
-
-    public boolean isValidade() {
-        return validade;
-    }
 
     public Documento getRefProxDocumento() {
         return refProxDocumento;

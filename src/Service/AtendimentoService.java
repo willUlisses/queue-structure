@@ -3,6 +3,8 @@ package Service;
 import Model.Cliente;
 import Utils.MenuAtendimento;
 
+import java.util.Scanner;
+
 
 public class AtendimentoService implements MenuAtendimento {
 
@@ -22,15 +24,9 @@ public class AtendimentoService implements MenuAtendimento {
         return filaClientes.first();
     }
 
-    public String finalizarAtendimento() {
+    public String finalizarAtendimentoCliente() {
         filaClientes.dequeue();
         return "Atendimento Finalizado";
     }
-
-    public void acoesAtendimento() {
-        System.out.println(imprimeMenuAtendimento());
-        //...
-    }
-
 
 }

@@ -1,15 +1,17 @@
 package Service;
 
 import Model.Cliente;
+import Utils.MenuAtendimento;
 
 
-public class AtendimentoService {
+public class AtendimentoService implements MenuAtendimento {
 
     FilaClientesService filaClientes = new FilaClientesService();
     PilhaDocumentosService pilhaDocumentos = new PilhaDocumentosService();
 
+
     public boolean verificaDocumento() {
-        return chamarCliente().getDataVencimentoDocumento() < 2025;
+        return chamarCliente().getDataVencimentoDocumento() > 2025;
     }
 
     public void adicionarClienteNaFila(String nome, int vencimentoDocumento) {
@@ -25,8 +27,10 @@ public class AtendimentoService {
         return "Atendimento Finalizado";
     }
 
-
-
+    public void acoesAtendimento() {
+        System.out.println(imprimeMenuAtendimento());
+        //...
+    }
 
 
 }

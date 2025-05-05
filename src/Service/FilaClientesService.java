@@ -46,17 +46,23 @@ public class FilaClientesService {
 
     @Override
     public String toString() {
-        String stringRetorno = "Fila de Clientes:\n";
+        String stringRetorno = "FILA DE CLIENTES:\n";
         stringRetorno += "-----------------\n";
 
         Cliente refAuxiliar = primeiro;
+
+        if (refAuxiliar == null) {
+            stringRetorno += "A fila está vazia\n";
+            return stringRetorno;
+        }
+
         stringRetorno += "Inicio == ";
         while (true) {
             stringRetorno += "{Cliente: " + refAuxiliar.getNome() + ", Senha: " + refAuxiliar.getNumeroDaSenha() + "} --> ";
             if (refAuxiliar.getRefProxCliente() != null) {
                 refAuxiliar = refAuxiliar.getRefProxCliente();
             } else {
-                stringRetorno += "fim";
+                stringRetorno += "fim\n";
                 break;
             }
         }

@@ -6,22 +6,25 @@ import Utils.MenuAtendimento;
 import java.util.Scanner;
 
 
-public class AtendimentoService implements MenuAtendimento {
+public class AtendimentoService {
 
     FilaClientesService filaClientes = new FilaClientesService();
     PilhaDocumentosService pilhaDocumentos = new PilhaDocumentosService();
 
 
     public boolean verificaDocumento() {
-        return chamarCliente().getDataVencimentoDocumento() > 2025;
+        return filaClientes.first().getDataVencimentoDocumento() > 2025;
     }
 
     public void adicionarClienteNaFila(String nome, int vencimentoDocumento) {
         filaClientes.enqueue(nome, vencimentoDocumento);
     }
 
-    public Cliente chamarCliente() {
-        return filaClientes.first();
+    public String chamarCliente() {
+        if (filaClientes.first() != null) {
+            return filaClientes.first().getNome();
+        }
+        return "Não há clientes na fila.";
     }
 
     public String finalizarAtendimentoCliente() {
@@ -29,4 +32,7 @@ public class AtendimentoService implements MenuAtendimento {
         return "Atendimento Finalizado";
     }
 
+    public String verFila() {
+        return filaClientes.toString();
+    }
 }

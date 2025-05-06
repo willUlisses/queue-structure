@@ -11,6 +11,7 @@ public class App {
         Scanner scannerAtendimento = new Scanner(System.in);
 
         boolean repetir = true;
+
         do {
             System.out.println(menuAtendimento());
             int opcaoAtendimento = scannerAtendimento.nextInt();
@@ -41,7 +42,6 @@ public class App {
 
             }
         } while (repetir);
-
     }
 
     static String menuAtendimento() {

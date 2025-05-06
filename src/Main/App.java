@@ -42,6 +42,8 @@ public class App {
 
             }
         } while (repetir);
+
+        System.out.println("TESTE DE COMMIT");
     }
 
     static String menuAtendimento() {
@@ -63,5 +65,6 @@ public class App {
         menuCliente += "[0] Finalizar Atendimento Cliente";
         return menuCliente;
     }
+
 
 }

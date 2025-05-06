@@ -14,19 +14,23 @@ public class ContaBancaria {
         return nome;
     }
 
-    public void setSaldo(int saldo) {
-        this.saldo = saldo;
-    }
-
-    public int getSaldo() {
-        return saldo;
-    }
-
     public ContaBancaria getRefProximaConta() {
         return refProximaConta;
     }
 
     public void setRefProximaConta(ContaBancaria refProximaConta) {
         this.refProximaConta = refProximaConta;
+    }
+
+    public void sacar(int valor) {
+        this.saldo -= valor;
+    }
+
+    public void depositar(int valor) {
+        this.saldo += valor;
+    }
+
+    public int getSaldo() {
+        return saldo;
     }
 }

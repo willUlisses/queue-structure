@@ -5,6 +5,12 @@ import Model.ContaBancaria;
 
 public class ListaContas {
     ContaBancaria refEntrada;
+    int tamanho;
+
+    public ListaContas() {
+        this.refEntrada = null;
+        this.tamanho = 0;
+    }
 
     void add(Cliente cliente) {
         ContaBancaria novaConta = new ContaBancaria(cliente);
@@ -21,6 +27,7 @@ public class ListaContas {
 
     ContaBancaria getConta(int index) {
         ContaBancaria refAuxiliar = refEntrada;
+        validaIndice(index);
         if (isEmpty()) {
             throw new IllegalStateException("Não existem contas na lista");
         } else {
@@ -31,14 +38,18 @@ public class ListaContas {
         }
     }
 
-    //MODIFICAR ISSO EM CASA
-    boolean validaIndice(int index) {
-        return true;
+    String getTitular(int index) {
+        return getConta(index).getNome();
     }
 
-    int size() {
+    private void validaIndice(int index) {
+        if (index >= size()) {
+            throw new IndexOutOfBoundsException("Index out of bounds");
+        }
+    }
+
+    private int size() {
         ContaBancaria refTamanho = refEntrada;
-        int tamanho = 0;
         while(true) {
             if (refTamanho != null) {
                 tamanho++;
@@ -50,7 +61,6 @@ public class ListaContas {
         }
         return tamanho;
     }
-
 
     private boolean isEmpty() {
         return refEntrada == null;

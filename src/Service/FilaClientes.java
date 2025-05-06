@@ -2,13 +2,13 @@ package Service;
 
 import Model.Cliente;
 
-public class FilaClientesService {
+public class FilaClientes {
     private Cliente primeiro;
     private Cliente ultimo;
     private Cliente refEntrada;
     int numeroDaSenha;
 
-    public FilaClientesService() {
+    public FilaClientes() {
         this.primeiro = null;
         this.ultimo = null;
         this.refEntrada = null;

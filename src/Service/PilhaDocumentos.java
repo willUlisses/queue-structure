@@ -2,12 +2,12 @@ package Service;
 
 import Model.Documento;
 
-public class PilhaDocumentosService {
+public class PilhaDocumentos {
     Documento refProximo;
     Documento topo;
 
 
-    public PilhaDocumentosService() {
+    public PilhaDocumentos() {
         this.refProximo = null;
         this.topo = null;
     }

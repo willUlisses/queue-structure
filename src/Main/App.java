@@ -1,13 +1,13 @@
 package Main;
 
-import Service.AtendimentoService;
+import Service.Atendimento;
 
 import java.util.Scanner;
 
 public class App {
     public static void main(String[] args) {
 
-        AtendimentoService atendimento = new AtendimentoService();
+        Atendimento atendimento = new Atendimento();
         Scanner scannerAtendimento = new Scanner(System.in);
 
         boolean repetir = true;
@@ -39,11 +39,9 @@ public class App {
                     break;
                 default:
                     System.out.println("Opção inválida, tente novamente.");
-
             }
         } while (repetir);
 
-        System.out.println("TESTE DE COMMIT");
     }
 
     static String menuAtendimento() {
@@ -58,11 +56,12 @@ public class App {
     }
 
     static String menuCliente() {
-        String menuCliente = "=====  MENU CLIENTE =====";
-        menuCliente += "[1] SACAR";
-        menuCliente += "[2] DEPOSITAR";
-        menuCliente += "[3] TRANSFERIR";
-        menuCliente += "[0] Finalizar Atendimento Cliente";
+        String menuCliente = "=====  MENU CLIENTE =====\n";
+        menuCliente += "[1] SACAR\n";
+        menuCliente += "[2] DEPOSITAR\n";
+        menuCliente += "[3] TRANSFERIR\n";
+        menuCliente += "[0] Finalizar Atendimento Cliente\n";
+        menuCliente += "-------------------------";
         return menuCliente;
     }
 

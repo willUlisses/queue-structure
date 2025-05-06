@@ -1,15 +1,12 @@
 package Service;
 
-import Model.Cliente;
 import Utils.MenuAtendimento;
 
-import java.util.Scanner;
 
+public class Atendimento {
 
-public class AtendimentoService {
-
-    FilaClientesService filaClientes = new FilaClientesService();
-    PilhaDocumentosService pilhaDocumentos = new PilhaDocumentosService();
+    FilaClientes filaClientes = new FilaClientes();
+    PilhaDocumentos pilhaDocumentos = new PilhaDocumentos();
 
 
     public boolean verificaDocumento() {

@@ -12,8 +12,12 @@ public class ListaContas {
         this.tamanho = 0;
     }
 
-    void add(Cliente cliente) {
-        ContaBancaria novaConta = new ContaBancaria(cliente);
+    public void criarConta(Cliente cliente) {
+        ContaBancaria contaCriada = new ContaBancaria(cliente);
+        add(contaCriada);
+    }
+
+    void add(ContaBancaria novaConta) {
         if (isEmpty()) {
             refEntrada =  novaConta;
         } else {

@@ -1,13 +1,17 @@
 package Model;
 
 public class ContaBancaria {
+
     ContaBancaria refProximaConta;
     String nome;
+    Cliente titular;
     int saldo;
 
 
     public ContaBancaria(Cliente cliente) {
         this.saldo = 0;
+        this.titular = cliente;
+        this.nome = cliente.getNome();
     }
 
     public String getNome() {
@@ -21,6 +25,8 @@ public class ContaBancaria {
     public void setRefProximaConta(ContaBancaria refProximaConta) {
         this.refProximaConta = refProximaConta;
     }
+
+    // ------ OPERAÇÕES RELACIONADAS AO SALDO
 
     public void sacar(int valor) {
         this.saldo -= valor;

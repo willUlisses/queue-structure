@@ -1,6 +1,9 @@
 package Main;
 
+import Model.Cliente;
+import Model.ContaBancaria;
 import Service.Atendimento;
+import Service.ListaContas;
 
 import java.util.Scanner;
 
@@ -10,7 +13,7 @@ public class App {
         Atendimento atendimento = new Atendimento();
         Scanner scannerAtendimento = new Scanner(System.in);
 
-        boolean repetir = true;
+        boolean repetir = true;/*
 
         do {
             System.out.println(menuAtendimento());
@@ -40,8 +43,18 @@ public class App {
                 default:
                     System.out.println("Opção inválida, tente novamente.");
             }
-        } while (repetir);
+        } while (repetir);*/
 
+        ListaContas minhaLista = new ListaContas();
+        Cliente cliente1 = new Cliente("Carlo", 2040);
+        Cliente cliente2 = new Cliente("cliente2", 2040);
+        Cliente cliente3 = new Cliente("cliente3", 2040);
+
+        minhaLista.criarConta(cliente1);
+        minhaLista.criarConta(cliente2);
+        minhaLista.criarConta(cliente3);
+
+        System.out.println(minhaLista);
     }
 
     static String menuAtendimento() {

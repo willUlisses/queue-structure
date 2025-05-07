@@ -1,12 +1,9 @@
 package Service;
 
-import Utils.MenuAtendimento;
-
 
 public class Atendimento {
 
     FilaClientes filaClientes = new FilaClientes();
-    PilhaDocumentos pilhaDocumentos = new PilhaDocumentos();
 
 
     public boolean verificaDocumento() {
@@ -32,4 +29,6 @@ public class Atendimento {
     public String verFila() {
         return filaClientes.toString();
     }
+
+
 }

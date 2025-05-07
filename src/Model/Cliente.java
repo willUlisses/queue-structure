@@ -3,6 +3,7 @@ package Model;
 public class Cliente {
 
     private String nome;
+    private ContaBancaria contaBancaria;
     private int numeroDaSenha;
     Cliente refProxCliente;
     Documento documento;
@@ -46,5 +47,13 @@ public class Cliente {
 
     public int getDataVencimentoDocumento() {
         return documento.getVencimento();
+    }
+
+    public ContaBancaria getContaBancaria() {
+        return contaBancaria;
+    }
+
+    public void setContaBancaria(ContaBancaria contaBancaria) {
+        this.contaBancaria = contaBancaria;
     }
 }

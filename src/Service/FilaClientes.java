@@ -1,6 +1,7 @@
 package Service;
 
 import Model.Cliente;
+import Model.ContaBancaria;
 
 public class FilaClientes {
     private Cliente primeiro;
@@ -15,8 +16,12 @@ public class FilaClientes {
         this.numeroDaSenha = 1;
     }
 
+
+
     void enqueue(String nome, int vencimentoDoc) {
         Cliente novoCliente = new Cliente(nome, vencimentoDoc);
+        ContaBancaria novaConta = new ContaBancaria(novoCliente);
+        novoCliente.setContaBancaria(novaConta);
         if (isEmpty()) {
             primeiro = novoCliente;
             ultimo = novoCliente;

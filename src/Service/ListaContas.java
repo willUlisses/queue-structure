@@ -18,7 +18,7 @@ public class ListaContas {
         add(contaCriada);
     }
 
-    void add(ContaBancaria novaConta) {
+    private void add(ContaBancaria novaConta) {
         if (this.isEmpty()) {
             refEntrada = novaConta;
             return;
@@ -31,7 +31,7 @@ public class ListaContas {
         }
     }
 
-    public ContaBancaria getConta(int index) {
+    ContaBancaria getConta(int index) {
         ContaBancaria refAuxiliar = refEntrada;
         validaIndice(index);
         if (isEmpty()) {

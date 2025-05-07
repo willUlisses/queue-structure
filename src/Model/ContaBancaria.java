@@ -9,7 +9,7 @@ public class ContaBancaria {
 
 
     public ContaBancaria(Cliente cliente) {
-        this.saldo = 0;
+        this.saldo = 100;
         this.titular = cliente;
         this.nome = cliente.getNome();
     }

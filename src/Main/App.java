@@ -13,7 +13,7 @@ public class App {
         Atendimento atendimento = new Atendimento();
         Scanner scannerAtendimento = new Scanner(System.in);
 
-        boolean repetir = true;/*
+        boolean repetir = true;
 
         do {
             System.out.println(menuAtendimento());
@@ -34,7 +34,10 @@ public class App {
                     System.out.println(atendimento.verFila());
                     break;
                 case 3:
-                    System.out.println(atendimento.chamarCliente() + "\n");
+                    System.out.println(atendimento.chamarCliente().getNome() + "\n");
+                    if (atendimento.verificaDocumento()) {
+                        System.out.println(menuCliente());
+                    }
                     break;
                 case 0:
                     System.out.println("Fechando Atendimento...");
@@ -43,7 +46,7 @@ public class App {
                 default:
                     System.out.println("Opção inválida, tente novamente.");
             }
-        } while (repetir);*/
+        } while (repetir);
 
         ListaContas minhaLista = new ListaContas();
         Cliente cliente1 = new Cliente("Carlo", 2040);
@@ -73,7 +76,6 @@ public class App {
         String menuCliente = "=====  MENU CLIENTE =====\n";
         menuCliente += "[1] SACAR\n";
         menuCliente += "[2] DEPOSITAR\n";
-        menuCliente += "[3] TRANSFERIR\n";
         menuCliente += "[0] Finalizar Atendimento Cliente\n";
         menuCliente += "-------------------------";
         return menuCliente;

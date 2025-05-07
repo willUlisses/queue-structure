@@ -1,9 +1,14 @@
 package Service;
 
 
+import Model.Cliente;
+
+import java.util.Scanner;
+
 public class Atendimento {
 
     FilaClientes filaClientes = new FilaClientes();
+    ListaContas listaContas = new ListaContas();
 
 
     public boolean verificaDocumento() {
@@ -14,12 +19,13 @@ public class Atendimento {
         filaClientes.enqueue(nome, vencimentoDocumento);
     }
 
-    public String chamarCliente() {
+    public Cliente chamarCliente() {
         if (filaClientes.first() != null) {
-            return filaClientes.first().getNome();
+            return filaClientes.first();
         }
-        return "Não há clientes na fila.";
+        throw new IllegalStateException("Não há clientes na fila");
     }
+
 
     public String finalizarAtendimentoCliente() {
         filaClientes.dequeue();

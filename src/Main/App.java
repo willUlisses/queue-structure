@@ -54,7 +54,8 @@ public class App {
         minhaLista.criarConta(cliente2);
         minhaLista.criarConta(cliente3);
 
-        System.out.println(minhaLista);
+        System.out.println(minhaLista.getTitular(1));
+
     }
 
     static String menuAtendimento() {

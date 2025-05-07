@@ -14,22 +14,24 @@ public class ListaContas {
 
     public void criarConta(Cliente cliente) {
         ContaBancaria contaCriada = new ContaBancaria(cliente);
+        cliente.setContaBancaria(contaCriada);
         add(contaCriada);
     }
 
     void add(ContaBancaria novaConta) {
-        if (isEmpty()) {
-            refEntrada =  novaConta;
+        if (this.isEmpty()) {
+            refEntrada = novaConta;
+            return;
         } else {
             ContaBancaria refAuxiliar = refEntrada;
-            for (int i = 0; i < size() - 1; i++) {
+            while (refAuxiliar.getRefProximaConta() != null) {
                 refAuxiliar = refAuxiliar.getRefProximaConta();
             }
             refAuxiliar.setRefProximaConta(novaConta);
         }
     }
 
-    ContaBancaria getConta(int index) {
+    public ContaBancaria getConta(int index) {
         ContaBancaria refAuxiliar = refEntrada;
         validaIndice(index);
         if (isEmpty()) {
@@ -42,7 +44,7 @@ public class ListaContas {
         }
     }
 
-    String getTitular(int index) {
+    public String getTitular(int index) {
         return getConta(index).getNome();
     }
 

@@ -5,10 +5,8 @@ public class Cliente {
     private String nome;
     private ContaBancaria contaBancaria;
     private int numeroDaSenha;
-    Cliente refProxCliente;
-    Documento documento;
-
-    public Cliente() { }
+    private Cliente refProxCliente;
+    private Documento documento;
 
     public Cliente(String nome, int vencimento) {
      this.nome = nome;

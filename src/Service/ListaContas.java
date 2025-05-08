@@ -44,10 +44,6 @@ public class ListaContas {
         }
     }
 
-    public String getTitular(int index) {
-        return getConta(index).getNome();
-    }
-
     private void validaIndice(int index) {
         if (index >= size()) {
             throw new IndexOutOfBoundsException("Index out of bounds");

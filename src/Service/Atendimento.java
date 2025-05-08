@@ -1,18 +1,15 @@
 package Service;
 
-
 import Model.Cliente;
-
-import java.util.Scanner;
+import Model.ContaBancaria;
 
 public class Atendimento {
 
     FilaClientes filaClientes = new FilaClientes();
-    ListaContas listaContas = new ListaContas();
 
-
-    public boolean verificaDocumento() {
-        return filaClientes.first().getDataVencimentoDocumento() > 2025;
+    public boolean verificaDocumento(Cliente cliente) {
+        cliente = filaClientes.first();
+        return cliente.getDataVencimentoDocumento() > 2025;
     }
 
     public void adicionarClienteNaFila(String nome, int vencimentoDocumento) {
@@ -29,11 +26,20 @@ public class Atendimento {
 
     public String finalizarAtendimentoCliente() {
         filaClientes.dequeue();
-        return "Atendimento Finalizado";
+        return "Atendimento Finalizado \n";
     }
 
     public String verFila() {
         return filaClientes.toString();
+    }
+
+    public String verDadosContaBancaria(ContaBancaria conta) {
+        String stringDados = "------ DADOS DA CONTA: ------\n" +
+                "Titular: " + conta.getNome() + "\n" +
+                "Saldo: " + conta.getSaldo() + "\n" +
+                "Número: " + filaClientes.numeroDaSenha + "\n" +
+                "-----------------------------\n";
+        return stringDados;
     }
 
 

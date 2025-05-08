@@ -1,9 +1,7 @@
 package Main;
 
-import Model.Cliente;
 import Model.ContaBancaria;
 import Service.Atendimento;
-import Service.ListaContas;
 
 import java.util.Scanner;
 
@@ -14,6 +12,7 @@ public class App {
         Scanner scannerAtendimento = new Scanner(System.in);
 
         boolean repetir = true;
+        boolean repetirCliente = true;
 
         do {
             System.out.println(menuAtendimento());
@@ -30,54 +29,83 @@ public class App {
 
                     atendimento.adicionarClienteNaFila(nomeCliente, dataDocumento);
                     break;
+
                 case 2:
                     System.out.println(atendimento.verFila());
                     break;
+
                 case 3:
-                    System.out.println(atendimento.chamarCliente().getNome() + "\n");
-                    if (atendimento.verificaDocumento()) {
-                        System.out.println(menuCliente());
+                    ContaBancaria contaClienteAtual =  atendimento.chamarCliente().getContaBancaria();
+                    Scanner scannerCliente = new Scanner(System.in);
+                    System.out.println(atendimento.chamarCliente().getNome() + "!\n");
+                    if (atendimento.verificaDocumento(atendimento.chamarCliente())) {
+                        do {
+                            Scanner valor = new Scanner(System.in);
+                            System.out.println(menuCliente());
+                            int opcCliente = scannerCliente.nextInt();
+                            switch (opcCliente) {
+                                case 1:
+                                    System.out.println("Qual valor você deseja sacar?");
+                                    int valorSacado = valor.nextInt();
+                                    atendimento.chamarCliente().getContaBancaria().sacar(valorSacado);
+                                    System.out.println("Valor sacado: R$" + valorSacado);
+                                    break;
+
+                                case 2:
+                                    System.out.println("Qual valor você deseja depositar?");
+                                    int valorDepositado = valor.nextInt();
+                                    contaClienteAtual.depositar(valorDepositado);
+                                    System.out.println("Valor depositado: R$" + valorDepositado);
+                                    break;
+
+                                case 3:
+                                    System.out.println(atendimento.verDadosContaBancaria(contaClienteAtual));
+                                    break;
+
+                                case 0:
+                                    System.out.println(atendimento.finalizarAtendimentoCliente());
+                                    repetirCliente = false;
+                                    break;
+
+                                default:
+                                    System.out.println("Opção inválida, tente novamente.");
+                            }
+
+                        } while(repetirCliente);
                     }
                     break;
+
                 case 0:
                     System.out.println("Fechando Atendimento...");
                     repetir = false;
                     break;
+
                 default:
                     System.out.println("Opção inválida, tente novamente.");
             }
         } while (repetir);
 
-        ListaContas minhaLista = new ListaContas();
-        Cliente cliente1 = new Cliente("Carlo", 2040);
-        Cliente cliente2 = new Cliente("cliente2", 2040);
-        Cliente cliente3 = new Cliente("cliente3", 2040);
-
-        minhaLista.criarConta(cliente1);
-        minhaLista.criarConta(cliente2);
-        minhaLista.criarConta(cliente3);
-
-        System.out.println(minhaLista.getTitular(1));
-
     }
 
     static String menuAtendimento() {
-        String stringMenu = "-----  MENU ATENDIMENTO -----\n";
-        stringMenu += "[1] Adicionar Cliente Na Fila \n";
-        stringMenu += "[2] Ver Fila\n";
-        stringMenu += "[3] Chamar Cliente\n";
-        stringMenu += "[0] Fechar Atendimento Geral\n";
-        stringMenu += "-------------------------";
-
+        String stringMenu = "-----  MENU ATENDIMENTO -----\n"
+         + "[1] Adicionar Cliente Na Fila \n"
+         + "[2] Ver Fila\n"
+         + "[3] Chamar Cliente\n"
+         + "[0] Fechar Atendimento Geral\n"
+         + "-------------------------\n";
         return stringMenu;
     }
 
+    // VOU IMPLEMENTAR POSSIBILIDADE DE TRANSFERENCIA MAIS TARDE!!!!!!!!!!!!!!!!
+
     static String menuCliente() {
-        String menuCliente = "=====  MENU CLIENTE =====\n";
-        menuCliente += "[1] SACAR\n";
-        menuCliente += "[2] DEPOSITAR\n";
-        menuCliente += "[0] Finalizar Atendimento Cliente\n";
-        menuCliente += "-------------------------";
+        String menuCliente = "=====  MENU CLIENTE =====\n"
+         + "[1] SACAR\n"
+         + "[2] DEPOSITAR\n"
+         + "[3] VER CONTA\n"
+         + "[0] Finalizar Atendimento Cliente\n"
+         + "-------------------------";
         return menuCliente;
     }
 
